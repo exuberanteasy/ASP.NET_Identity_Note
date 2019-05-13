@@ -1,5 +1,8 @@
 ASP.NET Identity 2.0: Setting Up Account Validation and Two-Factor Authorization
-
 JOHN ATTENAPRIL 20, 2014 8
-
 http://johnatten.com/2014/04/20/asp-net-identity-2-0-setting-up-account-validation-and-two-factor-authorization/
+
+--------------------------------------------------------------------------
+Account confirmation and password recovery with ASP.NET Identity (C#)
+https://docs.microsoft.com/en-us/aspnet/identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity#email-confirmation
+
