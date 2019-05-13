@@ -18,3 +18,7 @@ https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/aspnet
 -----------------------------------------------------------------------------------------
 How to Send Email Using SendGrid with Azure
 https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email
+
+------------------------------------------------------------------------------
+The Official Twilio SendGrid Led, Community Driven C#, .NetStandard, .NetCore API Library https://sendgrid.com
+https://github.com/sendgrid/sendgrid-csharp
