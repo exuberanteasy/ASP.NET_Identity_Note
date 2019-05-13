@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using SendGrid.Helpers.Mail;
+using System.Net;
+using System.Configuration;
+using SendGrid;
 
 namespace IdentitySample.Models
 {
@@ -86,9 +90,47 @@ namespace IdentitySample.Models
     {
         public Task SendAsync(IdentityMessage message)
         {
+            return configSendGridasync(message);
+
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            //return Task.FromResult(0);
         }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new EmailAddress("Joe@contoso.com", "Joe S.");
+
+            //var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+            var apiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+            var client = new SendGridClient(apiKey);
+
+
+            myMessage.Subject = message.Subject;
+            myMessage.PlainTextContent = message.Body;
+            myMessage.HtmlContent = message.Body;
+
+            //var credentials = new NetworkCredential(
+            //           ConfigurationManager.AppSettings["mailAccount"],
+            //           ConfigurationManager.AppSettings["mailPassword"]
+            //           );
+
+            // Create a Web transport for sending email.
+            //var transportWeb = new Web(credentials);
+
+            // Send the email.
+            if (client != null)
+            {
+                return client.SendEmailAsync(myMessage);
+            }
+            else
+            {
+                return Task.FromResult(0);
+            }
+        }
+
     }
 
     public class SmsService : IIdentityMessageService
